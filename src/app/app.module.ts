@@ -13,6 +13,18 @@ import { HomeComponent } from './home/home.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeContentComponent } from './home-content/home-content.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { RoomTypeComponent } from './room-type/room-type.component';
+import { RoomComponent } from './room/room.component';
+import { CarTypeComponent } from './car-type/car-type.component';
+import { CarBrandComponent } from './car-brand/car-brand.component';
+import { CarModelComponent } from './car-model/car-model.component';
+import { CarComponent } from './car/car.component';
+import { RoomReservationComponent } from './room-reservation/room-reservation.component';
+import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { CarsComponent } from './car/cars/cars.component';
+import { CarsListComponent } from './car/cars-list/cars-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +33,19 @@ import { HomeContentComponent } from './home-content/home-content.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HomeContentComponent
+    HomeContentComponent,
+    HotelComponent,
+    RoomTypeComponent,
+    RoomComponent,
+    CarTypeComponent,
+    CarBrandComponent,
+    CarModelComponent,
+    CarComponent,
+    RoomReservationComponent,
+    CarReservationComponent,
+    ReservationComponent,
+    CarsComponent,
+    CarsListComponent
   ],
   imports: [
     BrowserModule,

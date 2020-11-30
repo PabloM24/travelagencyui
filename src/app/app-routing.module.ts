@@ -1,3 +1,13 @@
+import { RoomTypeComponent } from './room-type/room-type.component';
+import { RoomReservationComponent } from './room-reservation/room-reservation.component';
+import { RoomComponent } from './room/room.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { CarTypeComponent } from './car-type/car-type.component';
+import { CarReservationComponent } from './car-reservation/car-reservation.component';
+import { CarModelComponent } from './car-model/car-model.component';
+import { CarBrandComponent } from './car-brand/car-brand.component';
+import { CarComponent } from './car/car.component';
 import { HomeContentComponent } from './home-content/home-content.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -13,11 +23,31 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'homeContent', component: HomeContentComponent },
+  { path: 'roomType', component: RoomTypeComponent },
+  { path: 'roomReservation', component: RoomReservationComponent },
+  { path: 'room', component: RoomComponent },
+  { path: 'reservation', component: ReservationComponent },
+  { path: 'hotel', component: HotelComponent },
+  { path: 'carType', component: CarTypeComponent },
+  { path: 'carReservation', component: CarReservationComponent },
+  { path: 'carModel', component: CarModelComponent },
+  { path: 'carBrand', component: CarBrandComponent },
+  { path: 'car', component: CarComponent },
   {
     path: 'home', component: HomeComponent,
     //canActivate: [AuthGuard],
     children: [
-      { path: 'homeContent', component: HomeContentComponent }
+      { path: 'homeContent', component: HomeContentComponent },
+      { path: 'roomType', component: RoomTypeComponent },
+      { path: 'roomReservation', component: RoomReservationComponent },
+      { path: 'room', component: RoomComponent },
+      { path: 'reservation', component: ReservationComponent },
+      { path: 'hotel', component: HotelComponent },
+      { path: 'carType', component: CarTypeComponent },
+      { path: 'carReservation', component: CarReservationComponent },
+      { path: 'carModel', component: CarModelComponent },
+      { path: 'carBrand', component: CarBrandComponent },
+      { path: 'car', component: CarComponent }
     ]
   }
 ];
