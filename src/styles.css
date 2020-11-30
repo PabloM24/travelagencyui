@@ -1,50 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import url(https://fonts.googleapis.com/icon?family=Roboto);
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-body {
-    font-family: Roboto;
-    margin: unset;
-}
-
 /* You can add global styles to this file, and also import other style files */
-
-/* You can add global styles to this file, and also import other style files */
-
-.form-group>input {
+.form-group>input{
     font-weight: bolder;
 }
 
-.form-group>label {
+.form-group>label{
     font-weight: lighter;
-}
+} 
 
-button[type="submit"] {
-    background-color: #20AAD4;
+button[type="submit"]{
+    background-color: #67dfd4;
     color: #fff;
-    font-size: 80%;
-    border-radius: 5rem;
-    letter-spacing: 0.1rem;
-    font-weight: bold;
-    transition: all 0.2s;
 }
 
-.jumbotron {
-    background-color: rgba(32, 170, 212, 0.70) !important;
+.jumbotron{
+    background-color: rgba(32, 170, 212, 0.70) !important ;
     padding-top: 32px;
     color: white;
 }
 
-table tr:hover {
+table tr:hover{
     cursor: pointer;
     background-color: green;
 }
 
-input.ng-dirty.ng-invalid {
+input.ng-dirty.ng-invalid{
     border-color: #dc3545;
 }
 
-div.validation-error {
+div.validation-error{
     width: 100%;
     margin-top: .25rem;
     font-size: 80%;

@@ -33,7 +33,7 @@
                 <span> Home</span>
             </a>
         </li>
-        <li *ngIf="rol==5 || rol==6" class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-user-secret"></i>
@@ -48,22 +48,22 @@
                 <a class="dropdown-item" routerLink="/changePassword">Change password</a>
             </div>
         </li>
-        <li *ngIf="rol==5 || rol==7 || rol==8" class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-cog"></i>
                 <span> Administration</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a *ngIf="rol==5 || rol==7 || rol==8" class="dropdown-item" routerLink="/consecutives">Consecutives</a>
-                <a *ngIf="rol==5 || rol==8" class="dropdown-item" routerLink="/parameters">Parameters</a>
-                <a *ngIf="rol==5 || rol==8" class="dropdown-item" routerLink="/movies">Movies</a>
-                <a *ngIf="rol==5 || rol==8" class="dropdown-item" routerLink="/books">Books</a>
-                <a *ngIf="rol==5 || rol==8" class="dropdown-item" routerLink="/music">Music</a>
+                <a class="dropdown-item" routerLink="/consecutives">Consecutives</a>
+                <a class="dropdown-item" routerLink="/parameters">Parameters</a>
+                <a class="dropdown-item" routerLink="/movies">Movies</a>
+                <a class="dropdown-item" routerLink="/books">Books</a>
+                <a class="dropdown-item" routerLink="/music">Music</a>
 
             </div>
         </li>
-        <li *ngIf="rol==5 || rol==9" class="nav-item dropdown">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-signal"></i>
