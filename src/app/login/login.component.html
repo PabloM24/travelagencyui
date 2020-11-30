@@ -1,0 +1,45 @@
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Welcome to Travel Agency</h5>
+                        <form #loginForm="ngForm" class="form-signin"
+                            (submit)="onSubmit(UserName.value,Password.value)">
+                            <div class="form-label-group">
+                                <input type="text" #UserName ngModel name="UserName" id="UserName" class="form-control"
+                                    placeholder="Email address" required autofocus>
+                                <label for="UserName">Username</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" #Password ngModel name="Password" id="inputPassword"
+                                    class="form-control" placeholder="Password" required>
+                                <label for="inputPassword">Password</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox mb-3">
+                                <re-captcha (resolved)="resolved($event)"
+                                    siteKey="6Ldzvr0ZAAAAAJjRJWW72pByjs4Kka1x3v7tXKll">
+                                </re-captcha>
+                            </div>
+
+                            <button [disabled]="!loginForm.valid"
+                                class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                                *ngIf="recaptcha != null">Sign in</button>
+                            <div *ngIf="isLoggingError" class="red text center error-message">
+                                <i class="material-icons">error</i> Incorrect Username or Password
+                            </div>
+                            <hr class="my-4">
+                            <button class="btn btn-lg btn-success btn-block text-uppercase" type="button"
+                                routerLink='/register'><i class="fa fa-plus-square mr-2"></i> Register?</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

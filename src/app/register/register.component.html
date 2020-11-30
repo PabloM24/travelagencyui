@@ -1,0 +1,66 @@
+<meta name="google-signin-client_id" content="417003354399-p707ua00f5gpl9raqq8c509872kc7dbr.apps.googleusercontent.com">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
+                    <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Register</h5>
+                    <form class="form-signin" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                        <fieldset>
+                            <div class="form-label-group">
+                                <input id="Nombre" name="Nombre" #Nombre="ngModel" [(ngModel)]="service.formData.Nombre"
+                                    type="text" class="form-control" placeholder="Name" required autofocus>
+                                <label for="Nombre">Name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="Apellido" name="Apellido" #Apellido="ngModel"
+                                    [(ngModel)]="service.formData.Apellido" type="text" class="form-control"
+                                    placeholder="LastName" required autofocus>
+                                <label for="Apellido">LastName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="Segundo_apellido" name="Segundo_apellido" #Segundo_apellido="ngModel"
+                                    type="text" [(ngModel)]="service.formData.Segundo_apellido" class="form-control"
+                                    placeholder="SecondLastName" required autofocus>
+                                <label for="Segundo_apellido">Second LastName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="Correo_electronico" name="Correo_electronico" #Correo_electronico="ngModel"
+                                    [(ngModel)]="service.formData.Correo_electronico" type="email" class="form-control"
+                                    placeholder="Email address" required autofocus>
+                                <label for="Correo_electronico">Email address</label>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-label-group">
+                                <input id="Nombre_usuario" name="Nombre_usuario" #Nombre_usuario="ngModel"
+                                    [(ngModel)]="service.formData.Nombre_usuario" type="text" class="form-control"
+                                    placeholder="User Name" required>
+                                <label for="Nombre_usuario">User Name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="Contrasenna" name="Contrasenna" #Contrasenna="ngModel"
+                                    [(ngModel)]="service.formData.Contrasenna" type="password" class="form-control"
+                                    placeholder="Password" required>
+                                <label for="Contrasenna">Password</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                                [disabled]="form.invalid">Register</button>
+                        </fieldset>
+                        <a class="d-block text-center mt-2 small" routerLink="/login">Sign In</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
