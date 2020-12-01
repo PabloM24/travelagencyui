@@ -47,18 +47,18 @@ export class CarsComponent implements OnInit {
   }
 
   insertRecord(form: NgForm) {
-    this.service.postMovie(form.value).subscribe(res => {
+    this.service.postCar(form.value).subscribe(res => {
       this.toastr.success('Item created successfully.', 'Great!');
       this.resetForm(form);
-      this.service.getMovie();
+      this.service.getCar();
     });
   }
 
   updateRecord(form: NgForm) {
-    this.service.putMovie(form.value).subscribe(res => {
+    this.service.putCar(form.value).subscribe(res => {
       this.toastr.info('Item updated successfully.', 'Hey!');
       this.resetForm(form);
-      this.service.getMovie();
+      this.service.getCar();
     });
   }
 

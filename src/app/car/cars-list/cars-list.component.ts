@@ -13,7 +13,7 @@ export class CarsListComponent implements OnInit {
   constructor(public service: CarService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getMovie();
+    this.service.getCar();
   }
 
   populateForm(item: Car) {
@@ -22,9 +22,9 @@ export class CarsListComponent implements OnInit {
 
   onDelete(ID: string) {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.service.deleteMovie(ID).subscribe(res => {
+      this.service.deleteCar(ID).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
-        this.service.getMovie();
+        this.service.getCar();
       });
     }
   }
