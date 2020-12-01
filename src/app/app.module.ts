@@ -43,6 +43,7 @@ import { RoomReservationsComponent } from './room-reservation/room-reservations/
 import { RoomReservationsListComponent } from './room-reservation/room-reservations-list/room-reservations-list.component';
 import { RoomTypesListComponent } from './room-type/room-types-list/room-types-list.component';
 import { RoomTypesComponent } from './room-type/room-types/room-types.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RoomTypesComponent } from './room-type/room-types/room-types.component'
     RoomReservationsComponent,
     RoomReservationsListComponent,
     RoomTypesListComponent,
-    RoomTypesComponent
+    RoomTypesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

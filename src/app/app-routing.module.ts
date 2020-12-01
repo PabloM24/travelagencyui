@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { RoomTypeComponent } from './room-type/room-type.component';
 import { RoomReservationComponent } from './room-reservation/room-reservation.component';
 import { RoomComponent } from './room/room.component';
@@ -16,10 +17,12 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 export const routes: Routes = [
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', redirectTo: 'home/homeContent', pathMatch: 'full' },
+  { path: 'profile', redirectTo: 'home/profile', pathMatch: 'full' },
   { path: 'roomType', redirectTo: 'home/roomType', pathMatch: 'full' },
   { path: 'roomReservation', redirectTo: 'home/roomReservation', pathMatch: 'full' },
   { path: 'room', redirectTo: 'home/room', pathMatch: 'full' },
@@ -43,11 +46,13 @@ export const routes: Routes = [
   { path: 'carModel', component: CarModelComponent },
   { path: 'carBrand', component: CarBrandComponent },
   { path: 'car', component: CarComponent },
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'home', component: HomeComponent,
     //canActivate: [AuthGuard],
     children: [
       { path: 'homeContent', component: HomeContentComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'roomType', component: RoomTypeComponent },
       { path: 'roomReservation', component: RoomReservationComponent },
       { path: 'room', component: RoomComponent },
