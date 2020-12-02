@@ -1,1 +1,41 @@
-<p>room-reservation works!</p>
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/home/homeContent">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a>Reservations</a>
+        </li>
+        <li class="breadcrumb-item active">Room Reservations</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Room Reservations Information
+        </div>
+        <div class="card-body">
+
+            <div class="jumbtron">
+                <div>
+                    <app-room-reservations-list></app-room-reservations-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-edit"></i>
+            Edit Room Reservations Information</div>
+
+        <div class="card-body">
+
+            <app-room-reservations></app-room-reservations>
+
+        </div>
+    </div>
+
+</div>

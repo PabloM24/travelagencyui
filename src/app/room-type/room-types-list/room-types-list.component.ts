@@ -1,4 +1,7 @@
+import { RoomType } from './../../shared/roomType/room-type.model';
+import { RoomTypeService } from './../../shared/roomType/room-type.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-room-types-list',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoomTypesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: RoomTypeService, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.service.getRoomType();
+  }
+
+  populateForm(item: RoomType) {
+    this.service.formData = Object.assign({}, item);
+  }
+
+  onDelete(ID: string) {
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.service.deleteRoomType(ID).subscribe(res => {
+        this.toastr.warning('Item deleted successfully.', 'Careful!');
+        this.service.getRoomType();
+      });
+    }
   }
 
 }

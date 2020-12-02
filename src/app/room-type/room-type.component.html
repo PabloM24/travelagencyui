@@ -1,1 +1,41 @@
-<p>room-type works!</p>
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/home/homeContent">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a>Hotels</a>
+        </li>
+        <li class="breadcrumb-item active">Room Types</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Room Types Information
+        </div>
+        <div class="card-body">
+
+            <div class="jumbtron">
+                <div>
+                    <app-room-types-list></app-room-types-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-edit"></i>
+            Edit Room Types Information</div>
+
+        <div class="card-body">
+
+            <app-room-types></app-room-types>
+
+        </div>
+    </div>
+
+</div>
