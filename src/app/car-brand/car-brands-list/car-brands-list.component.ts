@@ -1,4 +1,8 @@
+import { CarBrandService } from './../../shared/carBrand/car-brand.service';
+import { CarBrand } from './../../shared/carBrand/car-brand.model';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-car-brands-list',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarBrandsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: CarBrandService, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.service.getCarBrand();
+  }
+
+  populateForm(item: CarBrand) {
+    this.service.formData = Object.assign({}, item);
+  }
+
+  onDelete(ID: string) {
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.service.deleteCarBrand(ID).subscribe(res => {
+        this.toastr.warning('Item deleted successfully.', 'Careful!');
+        this.service.getCarBrand();
+      });
+    }
   }
 
 }

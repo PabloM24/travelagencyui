@@ -1,1 +1,41 @@
-<p>car-model works!</p>
+<div class="container-fluid">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/home/homeContent">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a>Cars</a>
+        </li>
+        <li class="breadcrumb-item active">Car Models</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Car Models Information
+        </div>
+        <div class="card-body">
+
+            <div class="jumbtron">
+                <div>
+                    <app-car-models-list></app-car-models-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-edit"></i>
+            Edit Car Models Information</div>
+
+        <div class="card-body">
+
+            <app-car-models></app-car-models>
+
+        </div>
+    </div>
+
+</div>

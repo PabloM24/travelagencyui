@@ -1,1 +1,31 @@
-<p>car-reservations-list works!</p>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Año de Estreno</th>
+                <th>Idioma</th>
+                <th>Actores</th>
+                <th>Descarga</th>
+                <th>Previsualizacion</th>
+                <th>Precio</th>
+                <th>Genero</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let item of service.list">
+            <td (click)="populateForm(item)">{{ item.ID_Consecutivo }}</td>
+            <td (click)="populateForm(item)">{{ item.Nombre }}</td>
+            <td (click)="populateForm(item)">{{ item.Year }}</td>
+            <td (click)="populateForm(item)">{{ item.Idioma }}</td>
+            <td (click)="populateForm(item)">{{ item.Actores }}</td>
+            <td (click)="populateForm(item)">{{ item.Arch_descar }}</td>
+            <td (click)="populateForm(item)">{{ item.Arch_previsu }}</td>
+            <td (click)="populateForm(item)">{{ item.Precio }}</td>
+            <td (click)="populateForm(item)">{{ item.Genero }}</td>
+            <td><button class="btn btn-sm btn-outline-danger" (click)="onDelete(item.ID_Consecutivo)">&times;</button>
+            </td>
+        </tr>
+
+    </table>
+</div>
