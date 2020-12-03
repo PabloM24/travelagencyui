@@ -20,9 +20,9 @@ export class HotelsListComponent implements OnInit {
     this.service.formData = Object.assign({}, item);
   }
 
-  onDelete(ID: string) {
+  onDelete(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.service.deleteHotel(ID).subscribe(res => {
+      this.service.deleteHotel(id).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getHotel();
       });

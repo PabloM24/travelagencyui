@@ -10,39 +10,41 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HotelsComponent implements OnInit {
 
+  stars = [];
+
   constructor(public service: HotelService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.stars = Array(5).fill(0).map((x, i) => i + 1);
   }
 
   resetForm(form?: NgForm) {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      ID_Consecutivo: null,
-      Nombre: '',
-      Year: '',
-      Idioma: '',
-      Actores: '',
-      Arch_descar: '',
-      Arch_previsu: '',
-      Precio: '',
-      Genero: null
+
+      id: '',
+      name: '',
+      email: '',
+      address: '',
+      point: [
+        0, 0
+      ],
+      phone: null,
+      rating: null
     }
   }
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    if (form.value.ID_Consecutivo == null) {
+    if (form.value.id === "") {
       this.insertRecord(form);
     }
     else {
       this.updateRecord(form);
     }
-
-
     this.resetForm(form);
   }
 

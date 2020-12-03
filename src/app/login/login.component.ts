@@ -6,6 +6,7 @@ import { LoginService } from '../shared/login/login.service';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   resolved(captchaResponse: any[]) {
     this.recaptcha = captchaResponse;
-    console.log(this.recaptcha);
+    //console.log(this.recaptcha);
   }
 
   auth2: any;
@@ -33,11 +34,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(userName, password) {
-    this.login.userAuthentication(userName, password).subscribe((data: any) => {
-      localStorage.setItem('userToken', data.access_token);
-      localStorage.setItem('user', JSON.stringify({ usuario: userName, password: password }));
-      this.route.navigate(['/home']);
+  onSubmit(form: NgForm) {
+    this.login.userAuthentication(form.value).subscribe((data: any) => {
+      if (JSON.stringify(data.Result) == 'true') {
+        localStorage.setItem('userToken', JSON.parse(JSON.stringify(data.Token)));
+        this.route.navigate(['/home']);
+      } else {
+        this.toastr.warning('Sign Error.', 'Try again!');
+      }
     },
       (err: HttpErrorResponse) => {
         console.log(err)

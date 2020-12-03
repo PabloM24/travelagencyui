@@ -17,7 +17,7 @@ declare var ID_usuario: any;
 export class ProfileComponent implements OnInit {
 
   userDetails: Homeuser;
-  Id_usuario: string;
+  ID_Usuario: string;
   userName: string;
   Correo_electronico: string;
   Nombre: string;
@@ -29,12 +29,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     if (this.user != null) {
       this.update.getUserDetails().subscribe((data: Homeuser) => {
-        this.Id_usuario = data.ID_Usuario;
+        this.ID_Usuario = data.ID_usuario;
         this.userName = data.Nombre;
-        this.Correo_electronico = data.Correo_Electronico;
+        this.Correo_electronico = data.Correo_electronico;
         this.Nombre = data.Nombre;
         this.Apellido = data.Apellido;
-        this.Segundo_apellido = data.Segundo_Apellido;
+        this.Segundo_apellido = data.Segundo_apellido;
         this.getInfo();
       });
     }
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
       Nombre_usuario: this.userName,
       Segundo_apellido: this.Segundo_apellido,
       Contrasenna: '',
-      ID_usuario: this.Id_usuario
+      ID_usuario: this.ID_Usuario
     };
   }
 

@@ -1,3 +1,6 @@
+import { FormsModule } from '@angular/forms';
+import { Login } from './login.model';
+import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,23 +12,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginService {
 
+  formData: Login;
+
   empty = [];
   readonly rootURL = environment.apiURL;
   constructor(private http: HttpClient, public zone: NgZone, public route: Router, private toastr: ToastrService) { }
 
-  userAuthentication(username, password) {
-    console.log(username + '' + password);
-    //var data = 'username=' + username + '&password=' + password + '&grant_type=password';
-    var data = 'grant_type=' + '&username=' + username + '&password=' + password + '&scope=client_id=&client_secret=';
-    console.log(data);
+  userAuthentication(formData: Login) {
+    //console.log(formData);
+    return this.http.post(this.rootURL + 'authenticate', formData, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
 
-    //var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded' 'application/json' });
-
-    return this.http.post(this.rootURL + 'token', data, { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded' }) });
   }
 
   getUserDetails() {
-    return this.http.get(this.rootURL + '/api/usuariosDetails',
+    return this.http.get(this.rootURL + '/secure/user',
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

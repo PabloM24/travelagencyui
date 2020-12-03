@@ -4,7 +4,7 @@
     <div class="form-group">
         <label><strong>Nombre</strong></label>
         <input name="Nombre" #Nombre="ngModel" [(ngModel)]="service.formData.Nombre" class="form-control" required>
-        <div *ngIf="Nombre.invalid && Naombre.touched">
+        <div *ngIf="Nombre.invalid && Nombre.touched">
             <p style="color:red">This field is required.</p>
         </div>
     </div>

@@ -1,10 +1,10 @@
 export class Homeuser {
-    ID_Usuario: string;
-    Nombre_Usuario: string;
+    ID_usuario: string;
+    Nombre_usuario: string;
     Email: string;
     Nombre: string;
     Apellido: string;
-    Segundo_Apellido: string;
-    Correo_Electronico: string;
+    Segundo_apellido: string;
+    Correo_electronico: string;
     Contrasenna: string;
 }
