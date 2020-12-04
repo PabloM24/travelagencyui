@@ -11,7 +11,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Email</strong></label>
-            <input name="email" #email='ngModel' [(ngModel)]="service.formData.email" class="form-control" required>
+            <input name="email" #email='ngModel' [(ngModel)]="service.formData.email" email="true" class="form-control"
+                required>
         </div>
         <div class="form-group col-md-6">
             <label><strong>Location</strong></label>
@@ -23,18 +24,18 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Phone Number</strong></label>
-            <input name="phone" #phone='ngModel' [(ngModel)]="service.formData.phone" class="form-control" required>
+            <input name="phone" #phone='ngModel' [(ngModel)]="service.formData.phone" type="number" class="form-control"
+                required>
         </div>
         <div class="form-group col-md-6">
             <label><strong>Rating</strong></label>
 
-            <input name="rating" #rating='ngModel' [(ngModel)]="service.formData.rating" class="form-control" required>
-            <!--<select name="rating" #rating="ngModel" [(ngModel)]="service.formData.rating" class="form-control" required>
+            <!--<input name="rating" #rating='ngModel' [(ngModel)]="service.formData.rating" class="form-control" required>-->
+            <select name="rating" #rating="ngModel" [(ngModel)]="service.formData.rating" class="form-control" required>
                 <option disabled>{{service.formData.rating}}</option>
                 <option *ngFor="let star of stars" [ngValue]="star">
                     {{star}}</option>
-            </select>-->
-
+            </select>
 
         </div>
     </div>
