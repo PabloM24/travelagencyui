@@ -1,10 +1,11 @@
 export class Register {
-
-    ID_usuario: string;
-    Apellido: string;
-    Correo_electronico: string;
-    Nombre: string;
-    Nombre_usuario: string;
-    Segundo_apellido: string;
-    Contrasenna: string;
+    username: string;
+    password: string;
+    identification: string;
+    first_name: string;
+    last_name: string;
+    second_last_name: string;
+    email: string;
+    birthday: Date;
+    phone: string;
 }

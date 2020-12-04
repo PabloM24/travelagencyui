@@ -1,6 +1,5 @@
 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" class="form-control">
-    <input type="hidden" name="point" #point="ngModel" [(ngModel)]="service.formData.point" class="form-control">
     <div class="form-group">
         <label><strong>Name</strong></label>
         <input name="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" required>
@@ -29,12 +28,12 @@
         <div class="form-group col-md-6">
             <label><strong>Rating</strong></label>
 
-            <!--<input name="rating" #rating='ngModel' [(ngModel)]="service.formData.rating" class="form-control" required>-->
-            <select name="rating" #rating="ngModel" [(ngModel)]="service.formData.rating" class="form-control" required>
+            <input name="rating" #rating='ngModel' [(ngModel)]="service.formData.rating" class="form-control" required>
+            <!--<select name="rating" #rating="ngModel" [(ngModel)]="service.formData.rating" class="form-control" required>
                 <option disabled>{{service.formData.rating}}</option>
                 <option *ngFor="let star of stars" [ngValue]="star">
                     {{star}}</option>
-            </select>
+            </select>-->
 
 
         </div>

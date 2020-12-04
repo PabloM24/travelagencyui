@@ -17,7 +17,8 @@ export class HotelsComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-    this.stars = Array(5).fill(0).map((x, i) => i + 1);
+    //this.stars = Array(5).fill(0).map((x, i) => i + 1);
+    this.stars = ["1", "2", "3", "4", "5"];
   }
 
   resetForm(form?: NgForm) {
@@ -29,9 +30,6 @@ export class HotelsComponent implements OnInit {
       name: '',
       email: '',
       address: '',
-      point: [
-        0, 0
-      ],
       phone: null,
       rating: null
     }
@@ -39,7 +37,7 @@ export class HotelsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    if (form.value.id === "") {
+    if (form.value.id === "" || form.value.id === null) {
       this.insertRecord(form);
     }
     else {

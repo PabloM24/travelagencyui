@@ -1,8 +1,12 @@
 export class Homeuser {
 
-    Email: string;
-    Nombre: string;
-    ID_Usuario: number;
-    ID_Consecutivo: string;
-    Rol: number;
+    username: string;
+    password: string;
+    identification: string;
+    first_name: string;
+    last_name: string;
+    second_last_name: string;
+    email: string;
+    birthday: Date;
+    phone: string;
 }

@@ -30,14 +30,8 @@ export class HotelService {
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  sendbody(id: string) {
-    const options = {
-
-    }
-  }
-
   deleteHotel(id: string) {
-    return this.http.delete(this.rootURL + 'secure/hotel/' + id,
+    return this.http.delete(this.rootURL + 'secure/hotel?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 

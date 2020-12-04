@@ -28,12 +28,12 @@ export class RegisterService {
   }
 
   putUser(formData: Register) {
-    return this.http.put(this.rootURL + '/Usuarios/' + formData.ID_usuario, formData,
+    return this.http.put(this.rootURL + '/Usuarios/', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   deleteUser(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/Usuarios/' + ID_Consecutivo,
+    return this.http.delete(this.rootURL + '/Usuarios/',
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

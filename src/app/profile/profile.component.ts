@@ -17,35 +17,33 @@ declare var ID_usuario: any;
 export class ProfileComponent implements OnInit {
 
   userDetails: Homeuser;
-  ID_Usuario: string;
-  userName: string;
-  Correo_electronico: string;
-  Nombre: string;
-  Apellido: string;
-  Segundo_apellido: string;
+  username: string;
+  password: string;
+  identification: string;
+  first_name: string;
+  last_name: string;
+  second_last_name: string;
+  email: string;
+  birthday: Date;
+  phone: string;
 
   constructor(private update: LoginService, public service: RegisterService, private toastr: ToastrService) { }
 
   ngOnInit() {
     if (this.user != null) {
       this.update.getUserDetails().subscribe((data: Homeuser) => {
-        this.ID_Usuario = data.ID_usuario;
-        this.userName = data.Nombre;
-        this.Correo_electronico = data.Correo_electronico;
-        this.Nombre = data.Nombre;
-        this.Apellido = data.Apellido;
-        this.Segundo_apellido = data.Segundo_apellido;
+        this.username = data.username;
+        this.password = data.password;
+        this.identification = data.identification;
+        this.first_name = data.first_name;
+        this.last_name = data.last_name;
+        this.second_last_name = data.second_last_name;
+        this.email = data.email;
+        this.birthday = data.birthday;
+        this.phone = data.phone;
         this.getInfo();
       });
     }
-  }
-
-  get userFacebook(): any {
-    return JSON.parse(localStorage.getItem('userFacebook'));
-  }
-
-  get userGoogle(): any {
-    return JSON.parse(localStorage.getItem('userGoogle'));
   }
 
   get user(): any {
@@ -57,13 +55,17 @@ export class ProfileComponent implements OnInit {
       form.resetForm();
     }
     this.service.formData = {
-      Apellido: this.Apellido,
-      Correo_electronico: this.Correo_electronico,
-      Nombre: this.Nombre,
-      Nombre_usuario: this.userName,
-      Segundo_apellido: this.Segundo_apellido,
-      Contrasenna: '',
-      ID_usuario: this.ID_Usuario
+
+      username: this.username,
+      password: this.password,
+      identification: this.identification,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      second_last_name: this.second_last_name,
+      email: this.email,
+      birthday: this.birthday,
+      phone: this.phone
+
     };
   }
 
