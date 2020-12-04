@@ -2,6 +2,7 @@ import { HotelService } from './../../shared/hotel/hotel.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-hotels',
@@ -51,6 +52,9 @@ export class HotelsComponent implements OnInit {
       this.toastr.success('Item created successfully.', 'Great!');
       this.resetForm(form);
       this.service.getHotel();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Insert Error! ' + err);
     });
   }
 
@@ -59,6 +63,9 @@ export class HotelsComponent implements OnInit {
       this.toastr.info('Item updated successfully.', 'Hey!');
       this.resetForm(form);
       this.service.getHotel();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Update Error! ' + err);
     });
   }
 

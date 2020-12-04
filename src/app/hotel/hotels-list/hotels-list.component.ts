@@ -2,6 +2,7 @@ import { HotelService } from './../../shared/hotel/hotel.service';
 import { Hotel } from './../../shared/hotel/hotel.model';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-hotels-list',
@@ -25,6 +26,9 @@ export class HotelsListComponent implements OnInit {
       this.service.deleteHotel(id).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getHotel();
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Delete Error! ' + err);
       });
     }
   }

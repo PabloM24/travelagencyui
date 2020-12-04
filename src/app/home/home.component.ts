@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.userdetails.getUserDetails().subscribe((data: Homeuser) => {
-      this.nombre = data.Nombre;
+      this.nombre = data.first_name;
     });
   }
 

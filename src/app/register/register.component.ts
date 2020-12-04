@@ -25,42 +25,20 @@ export class RegisterComponent implements OnInit {
     this.resetForm();
   }
 
-  prepareLoginButton() {
-
-    this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
-      (googleUser) => {
-
-        let profile = googleUser.getBasicProfile();
-        console.log('Token || ' + googleUser.getAuthResponse().id_token);
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail());
-        //YOUR CODE HERE
-        localStorage.setItem('userGoogle', JSON.stringify(profile));
-        console.log('variable de google' + profile);
-        localStorage.setItem('userFacebook', null);
-        this.zone.run(() => {
-          this.route.navigate(['/create-user']);
-        });
-
-      }, (error) => {
-        this.toastr.warning('Sign Error!', error);
-      });
-
-  }
-
   resetForm(form?: NgForm) {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      Apellido: '',
-      Correo_electronico: '',
-      Nombre: '',
-      Nombre_usuario: '',
-      Segundo_apellido: '',
-      Contrasenna: '',
-      ID_usuario: ''
+
+      username: '',
+      password: '',
+      identification: '',
+      first_name: '',
+      last_name: '',
+      second_last_name: '',
+      email: '',
+      birthday: null,
+      phone: ''
     };
   }
 

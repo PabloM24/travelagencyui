@@ -18,7 +18,7 @@
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
                                 class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4 *ngIf="user != null">{{Nombre + " " + Apellido + " "+ Segundo_apellido }}</h4>
+                                <h4 *ngIf="user != null">{{first_name + " " + last_name + " "+ second_last_name }}</h4>
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-muted font-size-sm">San Jose, CR</p>
                             </div>
@@ -94,48 +94,48 @@
                     <!-- *ngIf="Id_usuario!=null"> -->
                     <fieldset>
                         <div class="form-label-group">
-                            <input type="hidden" name="ID_usuario" #ID_usuario="ngModel"
-                                [(ngModel)]="service.formData.ID_usuario" class="form-control">
+                            <input type="hidden" name="identification" #identification="ngModel"
+                                [(ngModel)]="service.formData.identification" class="form-control">
                         </div>
                         <div class="form-label-group">
-                            <input id="Nombre" name="Nombre" #Nombre?="ngModel" [(ngModel)]="service.formData.Nombre"
-                                type="text" class="form-control" placeholder="Name" required autofocus>
-                            <label for="Nombre">Name</label>
-                        </div>
-                        <hr>
-                        <div class="form-label-group">
-                            <input id="Apellido" name="Apellido" #Apellido="ngModel"
-                                [(ngModel)]="service.formData.Apellido" type="text" class="form-control"
-                                placeholder="LastName" required autofocus>
-                            <label for="Apellido">LastName</label>
+                            <input id="first_name" name="first_name" #first_name?="ngModel"
+                                [(ngModel)]="service.formData.first_name" type="text" class="form-control"
+                                placeholder="first_name" required autofocus>
+                            <label for="first_name">Name</label>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="Segundo_apellido" name="Segundo_apellido" #Segundo_apellido="ngModel"
-                                [(ngModel)]="service.formData.Segundo_apellido" type="text" class="form-control"
-                                placeholder="SecondLastName" required autofocus>
-                            <label for="Segundo_apellido">Second LastName</label>
+                            <input id="last_name" name="last_name" #last_name="ngModel"
+                                [(ngModel)]="service.formData.last_name" type="text" class="form-control"
+                                placeholder="last_name" required autofocus>
+                            <label for="last_name">LastName</label>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="Correo_electronico" name="Correo_electronico" #Correo_electronico="ngModel"
-                                [(ngModel)]="service.formData.Correo_electronico" type="email" class="form-control"
-                                placeholder="Email address" required autofocus>
-                            <label for="Correo_electronico">Email address</label>
+                            <input id="second_last_name" name="second_last_name" #second_last_name="ngModel"
+                                [(ngModel)]="service.formData.second_last_name" type="text" class="form-control"
+                                placeholder="second_last_name" required autofocus>
+                            <label for="second_last_name">Second LastName</label>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="Nombre_usuario" name="Nombre_usuario" #Nombre_usuario="ngModel"
-                                [(ngModel)]="service.formData.Nombre_usuario" type="text" class="form-control"
-                                placeholder="User Name" required readonly>
-                            <label for="Nombre_usuario">User Name</label>
+                            <input id="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email"
+                                type="email" class="form-control" placeholder="email" required autofocus>
+                            <label for="email">Email address</label>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="Contrasenna" name="Contrasenna" #Contrasenna="ngModel"
-                                [(ngModel)]="service.formData.Contrasenna" type="password" class="form-control"
-                                placeholder="New Password" required>
-                            <label for="Contrasenna">New Password</label>
+                            <input id="username" name="username" #username="ngModel"
+                                [(ngModel)]="service.formData.username" type="text" class="form-control"
+                                placeholder="username" required readonly>
+                            <label for="username">User Name</label>
+                        </div>
+                        <hr>
+                        <div class="form-label-group">
+                            <input id="password" name="password" #Contrasenna="ngModel"
+                                [(ngModel)]="service.formData.password" type="password" class="form-control"
+                                placeholder="password" required>
+                            <label for="password">New Password</label>
                         </div>
                         <hr>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
