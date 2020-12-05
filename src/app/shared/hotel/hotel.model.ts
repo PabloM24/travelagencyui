@@ -4,6 +4,6 @@ export class Hotel {
     name: string;
     email: string;
     address: string;
-    phone: number;
+    phone: string;
     rating: number;
 }

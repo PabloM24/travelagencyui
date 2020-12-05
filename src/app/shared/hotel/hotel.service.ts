@@ -17,7 +17,6 @@ export class HotelService {
   getHotel() {
     this.http.get(this.rootURL + 'secure/hotel', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as Hotel[]);
-    console.log(localStorage.getItem('userToken'));
   }
 
   postHotel(formData: Hotel) {

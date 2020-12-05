@@ -19,7 +19,7 @@ export class HotelsComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
     //this.stars = Array(5).fill(0).map((x, i) => i + 1);
-    this.stars = ["1", "2", "3", "4", "5"];
+    this.stars = [1, 2, 3, 4, 5];
   }
 
   resetForm(form?: NgForm) {
@@ -31,7 +31,7 @@ export class HotelsComponent implements OnInit {
       name: '',
       email: '',
       address: '',
-      phone: null,
+      phone: '',
       rating: null
     }
   }
@@ -54,7 +54,7 @@ export class HotelsComponent implements OnInit {
       this.service.getHotel();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Insert Error! ' + err);
+      this.toastr.warning('Insert Error! ' + err.error);
     });
   }
 
@@ -65,7 +65,7 @@ export class HotelsComponent implements OnInit {
       this.service.getHotel();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Update Error! ' + err);
+      this.toastr.warning('Update Error! ' + err.error);
     });
   }
 
