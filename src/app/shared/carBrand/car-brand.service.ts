@@ -14,22 +14,22 @@ export class CarBrandService {
   constructor(private http: HttpClient) { }
 
   getCarBrand() {
-    this.http.get(this.rootURL, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
+    this.http.get(this.rootURL + 'secure/car-brand', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as CarBrand[]);
   }
 
   postCarBrand(formData: CarBrand) {
-    return this.http.post(this.rootURL, formData,
+    return this.http.post(this.rootURL + 'secure/car-brand', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putCarBrand(formData: CarBrand) {
-    return this.http.put(this.rootURL + '/' + formData.ID_Consecutivo, formData,
+    return this.http.put(this.rootURL + 'secure/car-brand', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  deleteCarBrand(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/' + ID_Consecutivo,
+  deleteCarBrand(id: string) {
+    return this.http.delete(this.rootURL + 'secure/car-brand?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

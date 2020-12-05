@@ -2,6 +2,7 @@ import { CarModelService } from './../../shared/carModel/car-model.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-models',
@@ -21,27 +22,20 @@ export class CarModelsComponent implements OnInit {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      ID_Consecutivo: null,
-      Nombre: '',
-      Year: '',
-      Idioma: '',
-      Actores: '',
-      Arch_descar: '',
-      Arch_previsu: '',
-      Precio: '',
-      Genero: null
+      id: '',
+      name: '',
+      brand: ''
     }
   }
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    if (form.value.ID_Consecutivo == null) {
+    if (form.value.id === "" || form.value.id === null) {
       this.insertRecord(form);
     }
     else {
       this.updateRecord(form);
     }
-
 
     this.resetForm(form);
   }
@@ -51,6 +45,9 @@ export class CarModelsComponent implements OnInit {
       this.toastr.success('Item created successfully.', 'Great!');
       this.resetForm(form);
       this.service.getCarModel();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Insert Error! ' + err.error);
     });
   }
 
@@ -59,6 +56,9 @@ export class CarModelsComponent implements OnInit {
       this.toastr.info('Item updated successfully.', 'Hey!');
       this.resetForm(form);
       this.service.getCarModel();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Update Error! ' + err.error);
     });
   }
 

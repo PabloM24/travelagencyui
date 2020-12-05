@@ -1,13 +1,14 @@
 export class Car {
 
-    ID_Consecutivo: string;
-    Nombre: string;
-    Year: string;
-    Idioma: string;
-    Actores: string;
-    Arch_descar: string;
-    Arch_previsu: string;
-    Precio: string;
-    Genero: number;
+    id: string;
+    brand: string;
+    model: string;
+    car_type: string;
+    color: string;
+    year: number;
+    millage: number;
+    license_plate: string;
+    price: number;
+    available: true;
 
 }

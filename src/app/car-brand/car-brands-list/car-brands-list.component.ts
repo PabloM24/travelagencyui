@@ -2,7 +2,7 @@ import { CarBrandService } from './../../shared/carBrand/car-brand.service';
 import { CarBrand } from './../../shared/carBrand/car-brand.model';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-brands-list',
@@ -21,11 +21,14 @@ export class CarBrandsListComponent implements OnInit {
     this.service.formData = Object.assign({}, item);
   }
 
-  onDelete(ID: string) {
+  onDelete(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.service.deleteCarBrand(ID).subscribe(res => {
+      this.service.deleteCarBrand(id).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getCarBrand();
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Delete Error! ' + err.error);
       });
     }
   }

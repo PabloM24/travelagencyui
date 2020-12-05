@@ -1,56 +1,20 @@
 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-    <input type="hidden" name="ID_Consecutivo" #ID_Consecutivo="ngModel" [(ngModel)]="service.formData.ID_Consecutivo"
-        class="form-control">
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" class="form-control">
     <div class="form-group">
-        <label><strong>Nombre</strong></label>
-        <input name="Nombre" #Nombre="ngModel" [(ngModel)]="service.formData.Nombre" class="form-control" required>
-        <div *ngIf="Nombre.invalid && Nombre.touched">
+        <label><strong>Name</strong></label>
+        <input name="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" required>
+        <div *ngIf="name.invalid && name.touched">
             <p style="color:red">This field is required.</p>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col-md-6">
-            <label><strong>Movie Genero</strong></label>
-            <select name="Genero" #Genero="ngModel" [(ngModel)]="service.formData.Genero" class="form-control" required>
-                <option disabled>{{service.formData.Genero}}</option>
-                <option *ngFor="let genero of service.list" [ngValue]="service.formData.Genero">
-                    {{service.formData.Genero}}
-                </option>
-            </select>
-        </div>
-        <div class="form-group col-md-6">
-            <label><strong>Movie Price</strong></label>
-            <input name="Precio" #Precio="ngModel" [(ngModel)]="service.formData.Precio" class="form-control" required>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label><strong>Year of release</strong></label>
-            <input name="Year" #Year='ngModel' [(ngModel)]="service.formData.Year" class="form-control" required>
-        </div>
-        <div class="form-group col-md-6">
-            <label><strong>Movie's Language</strong></label>
-            <input name="Idioma" #Idioma='ngModel' [(ngModel)]="service.formData.Idioma" class="form-control" required>
-        </div>
-    </div>
 
     <div class="form-group">
-        <label><strong>Movie Actors</strong></label>
-        <input name="Actores" #Actores="ngModel" [(ngModel)]="service.formData.Actores" class="form-control" required>
-    </div>
-
-
-    <div class="form-group">
-        <label><strong>Full book download path</strong></label>
-        <input name="Arch_descar" #Arch_descar="ngModel" [(ngModel)]="service.formData.Arch_descar" class="form-control"
-            required>
-    </div>
-
-    <div class="form-group">
-        <label><strong>Movie previsualization path</strong></label>
-        <input name="Arch_previsu" #Arch_previsu="ngModel" [(ngModel)]="service.formData.Arch_previsu"
+        <label><strong>Country</strong></label>
+        <input name="origin_country" #origin_country="ngModel" [(ngModel)]="service.formData.origin_country"
             class="form-control" required>
+        <div *ngIf="origin_country.invalid && origin_country.touched">
+            <p style="color:red">This field is required.</p>
+        </div>
     </div>
 
     <div class="form-group">

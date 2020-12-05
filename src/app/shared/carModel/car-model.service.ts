@@ -15,22 +15,22 @@ export class CarModelService {
   constructor(private http: HttpClient) { }
 
   getCarModel() {
-    this.http.get(this.rootURL, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
+    this.http.get(this.rootURL + 'secure/car-model', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as CarModel[]);
   }
 
   postCarModel(formData: CarModel) {
-    return this.http.post(this.rootURL, formData,
+    return this.http.post(this.rootURL + 'secure/car-model', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putCarModel(formData: CarModel) {
-    return this.http.put(this.rootURL + '/' + formData.ID_Consecutivo, formData,
+    return this.http.put(this.rootURL + 'secure/car-model', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  deleteCarModel(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/' + ID_Consecutivo,
+  deleteCarModel(id: string) {
+    return this.http.delete(this.rootURL + 'secure/car-model?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }
