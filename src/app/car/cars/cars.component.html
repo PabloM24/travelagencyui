@@ -75,6 +75,20 @@
     </div>
 
     <div class="form-group">
+        <label><strong>Availability</strong></label>
+        <select name="available" #available="ngModel" [(ngModel)]="service.formData.available" class="form-control"
+            required>
+            <option disabled>{{service.formData.available}}</option>
+            <option *ngFor="let availa of availability" [ngValue]="availa">
+                {{availa}}</option>
+            <div *ngIf="available.invalid && available.touched">
+                <p style="color:red">This field is required.</p>
+            </div>
+        </select>
+
+    </div>
+
+    <div class="form-group">
         <button type="submit" [disabled]="form.invalid" class="btn btn-info btn-lg btn-block">Create</button>
     </div>
 </form>

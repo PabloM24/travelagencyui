@@ -15,22 +15,22 @@ export class RoomTypeService {
   constructor(private http: HttpClient) { }
 
   getRoomType() {
-    this.http.get(this.rootURL, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
+    this.http.get(this.rootURL + 'secure/room-type', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as RoomType[]);
   }
 
   postRoomType(formData: RoomType) {
-    return this.http.post(this.rootURL, formData,
+    return this.http.post(this.rootURL + 'secure/room-type', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putRoomType(formData: RoomType) {
-    return this.http.put(this.rootURL + '/' + formData.ID_Consecutivo, formData,
+    return this.http.put(this.rootURL + 'secure/room-type', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  deleteRoomType(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/' + ID_Consecutivo,
+  deleteRoomType(id: string) {
+    return this.http.delete(this.rootURL + 'secure/room-type?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

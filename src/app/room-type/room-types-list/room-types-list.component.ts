@@ -2,6 +2,7 @@ import { RoomType } from './../../shared/roomType/room-type.model';
 import { RoomTypeService } from './../../shared/roomType/room-type.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-room-types-list',
@@ -20,11 +21,14 @@ export class RoomTypesListComponent implements OnInit {
     this.service.formData = Object.assign({}, item);
   }
 
-  onDelete(ID: string) {
+  onDelete(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.service.deleteRoomType(ID).subscribe(res => {
+      this.service.deleteRoomType(id).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getRoomType();
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Delete Error! ' + err.error);
       });
     }
   }

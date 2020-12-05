@@ -11,11 +11,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CarsComponent implements OnInit {
 
+  availability = [];
+
   constructor(public service: CarService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.availability = [true, false];
   }
 
   resetForm(form?: NgForm) {
@@ -31,7 +34,7 @@ export class CarsComponent implements OnInit {
       millage: null,
       license_plate: '',
       price: null,
-      available: true
+      available: null
     }
   }
 
