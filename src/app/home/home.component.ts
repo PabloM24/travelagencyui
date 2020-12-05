@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private userdetails: HomeuserService) { }
 
   ngOnInit() {
-    this.userdetails.getUserDetails().subscribe((data: Homeuser) => {
-      this.nombre = data.first_name;
-    });
+    //this.userdetails.getUserDetails().subscribe((data: Homeuser) => {
+    //this.nombre = data.first_name;
+    //});
   }
 
   Logout() {

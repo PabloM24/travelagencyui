@@ -12,7 +12,7 @@ export class HomeuserService {
   constructor(private http: HttpClient) { }
 
   getUserDetails() {
-    return this.http.get(this.rootURL + '/api/GetUserDetails',
+    return this.http.get(this.rootURL + 'secure/user-info',
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }
