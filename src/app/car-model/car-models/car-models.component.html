@@ -9,11 +9,22 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label><strong>Brand</strong></label>
-        <input name="brand" #brand="ngModel" [(ngModel)]="service.formData.brand" class="form-control" required>
-        <div *ngIf="brand.invalid && brand.touched">
-            <p style="color:red">This field is required.</p>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><strong>Brand</strong></label>
+            <input name="brand" #brand="ngModel" [(ngModel)]="service.formData.brand" class="form-control" required>
+            <div *ngIf="brand.invalid && brand.touched">
+                <p style="color:red">This field is required.</p>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label><strong>Price</strong></label>
+            <input name="price" #price='ngModel' [(ngModel)]="service.formData.price" type="number" class="form-control"
+                required>
+            <div *ngIf="price.invalid && price.touched">
+                <p style="color:red">This field is required.</p>
+            </div>
         </div>
     </div>
 

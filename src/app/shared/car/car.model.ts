@@ -8,7 +8,6 @@ export class Car {
     year: number;
     millage: number;
     license_plate: string;
-    price: number;
     available: boolean;
 
 }

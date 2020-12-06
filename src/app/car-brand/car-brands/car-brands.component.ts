@@ -48,7 +48,7 @@ export class CarBrandsComponent implements OnInit {
       this.service.getCarBrand();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Insert Error! ' + err.error);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -59,7 +59,7 @@ export class CarBrandsComponent implements OnInit {
       this.service.getCarBrand();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Update Error! ' + err.error);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 }

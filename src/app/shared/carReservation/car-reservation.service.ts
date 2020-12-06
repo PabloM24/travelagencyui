@@ -14,22 +14,22 @@ export class CarReservationService {
   constructor(private http: HttpClient) { }
 
   getCarReservation() {
-    this.http.get(this.rootURL, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
+    this.http.get(this.rootURL + 'secure/car-reservation', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as CarReservation[]);
   }
 
   postCarReservation(formData: CarReservation) {
-    return this.http.post(this.rootURL, formData,
+    return this.http.post(this.rootURL + 'secure/car-reservation', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putCarReservation(formData: CarReservation) {
-    return this.http.put(this.rootURL + '/' + formData.ID_Consecutivo, formData,
+    return this.http.put(this.rootURL + 'secure/car-reservation', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  deleteCarReservation(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/' + ID_Consecutivo,
+  deleteCarReservation(id: string) {
+    return this.http.delete(this.rootURL + 'secure/car-reservation?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

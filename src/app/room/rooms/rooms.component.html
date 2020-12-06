@@ -1,6 +1,6 @@
 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" class="form-control">
-    <div class="row">
+    <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Hotel</strong></label>
             <input name="hotel" #hotel="ngModel" [(ngModel)]="service.formData.hotel" class="form-control" required>
@@ -20,9 +20,10 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label><strong>Hotel</strong></label>
-            <input name="hotel" #hotel='ngModel' [(ngModel)]="service.formData.hotel" class="form-control" required>
-            <div *ngIf="hotel.invalid && hotel.touched">
+            <label><strong>Room Type</strong></label>
+            <input name="room_type" #room_type='ngModel' [(ngModel)]="service.formData.room_type" class="form-control"
+                required>
+            <div *ngIf="room_type.invalid && room_type.touched">
                 <p style="color:red">This field is required.</p>
             </div>
         </div>

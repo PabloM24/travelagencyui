@@ -33,7 +33,6 @@ export class CarsComponent implements OnInit {
       year: null,
       millage: null,
       license_plate: '',
-      price: null,
       available: null
     }
   }
@@ -47,7 +46,6 @@ export class CarsComponent implements OnInit {
       this.updateRecord(form);
     }
 
-
     this.resetForm(form);
   }
 
@@ -58,7 +56,7 @@ export class CarsComponent implements OnInit {
       this.service.getCar();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Insert Error! ' + err.error);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -69,7 +67,7 @@ export class CarsComponent implements OnInit {
       this.service.getCar();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Update Error! ' + err.error);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 

@@ -2,6 +2,7 @@ import { CarReservationService } from './../../shared/carReservation/car-reserva
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-reservations',
@@ -10,39 +11,38 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CarReservationsComponent implements OnInit {
 
+  today = new Date;
+  days = 1;
+  tomorrow = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000);
+
   constructor(public service: CarReservationService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.today;
+    this.tomorrow;
   }
 
   resetForm(form?: NgForm) {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      ID_Consecutivo: null,
-      Nombre: '',
-      Year: '',
-      Idioma: '',
-      Actores: '',
-      Arch_descar: '',
-      Arch_previsu: '',
-      Precio: '',
-      Genero: null
+      id: '',
+      car: '',
+      start: null,
+      end: null
     }
   }
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    if (form.value.ID_Consecutivo == null) {
+    if (form.value.id === "" || form.value.id === null) {
       this.insertRecord(form);
     }
     else {
       this.updateRecord(form);
     }
-
-
     this.resetForm(form);
   }
 
@@ -51,6 +51,9 @@ export class CarReservationsComponent implements OnInit {
       this.toastr.success('Item created successfully.', 'Great!');
       this.resetForm(form);
       this.service.getCarReservation();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -59,6 +62,9 @@ export class CarReservationsComponent implements OnInit {
       this.toastr.info('Item updated successfully.', 'Hey!');
       this.resetForm(form);
       this.service.getCarReservation();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 

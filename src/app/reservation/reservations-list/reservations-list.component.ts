@@ -2,6 +2,7 @@ import { Reservation } from './../../shared/reservation/reservation.model';
 import { ReservationService } from './../../shared/reservation/reservation.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservations-list',
@@ -20,11 +21,14 @@ export class ReservationsListComponent implements OnInit {
     this.service.formData = Object.assign({}, item);
   }
 
-  onDelete(ID: string) {
+  onDelete(id: string) {
     if (confirm('Are you sure you want to delete this item?')) {
-      this.service.deleteReservation(ID).subscribe(res => {
+      this.service.deleteReservation(id).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getReservation();
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
       });
     }
   }

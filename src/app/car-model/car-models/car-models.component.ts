@@ -24,7 +24,8 @@ export class CarModelsComponent implements OnInit {
     this.service.formData = {
       id: '',
       name: '',
-      brand: ''
+      brand: '',
+      price: null
     }
   }
 
@@ -47,7 +48,7 @@ export class CarModelsComponent implements OnInit {
       this.service.getCarModel();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Insert Error! ' + err.error);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -58,7 +59,7 @@ export class CarModelsComponent implements OnInit {
       this.service.getCarModel();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Update Error! ' + err.error);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 

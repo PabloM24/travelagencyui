@@ -28,7 +28,7 @@ export class CarBrandsListComponent implements OnInit {
         this.service.getCarBrand();
       }, (err: HttpErrorResponse) => {
         console.log(err);
-        this.toastr.warning('Delete Error! ' + err.error);
+        this.toastr.warning('Delete Error! ' + err.error.HttpErrorResponse);
       });
     }
   }

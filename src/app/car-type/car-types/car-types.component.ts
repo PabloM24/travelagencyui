@@ -58,7 +58,7 @@ export class CarTypesComponent implements OnInit {
       this.service.getCarType();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Insert Error! ' + err.error);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -69,7 +69,7 @@ export class CarTypesComponent implements OnInit {
       this.service.getCarType();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Update Error! ' + err.error);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 

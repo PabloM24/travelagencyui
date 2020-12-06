@@ -2,6 +2,7 @@ import { CarReservationService } from './../../shared/carReservation/car-reserva
 import { CarReservation } from './../../shared/carReservation/car-reservation.model';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -26,6 +27,9 @@ export class CarReservationsListComponent implements OnInit {
       this.service.deleteCarReservation(ID).subscribe(res => {
         this.toastr.warning('Item deleted successfully.', 'Careful!');
         this.service.getCarReservation();
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
       });
     }
   }

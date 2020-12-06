@@ -2,6 +2,7 @@ import { ReservationService } from './../../shared/reservation/reservation.servi
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservations',
@@ -21,28 +22,22 @@ export class ReservationsComponent implements OnInit {
     if (form != null)
       form.resetForm();
     this.service.formData = {
-      ID_Consecutivo: null,
-      Nombre: '',
-      Year: '',
-      Idioma: '',
-      Actores: '',
-      Arch_descar: '',
-      Arch_previsu: '',
-      Precio: '',
-      Genero: null
+      id: '',
+      hotel_reservation: '',
+      car_reservation: '',
+      total: null,
+      paid: null,
     }
   }
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    if (form.value.ID_Consecutivo == null) {
+    if (form.value.id === "" || form.value.id === null) {
       this.insertRecord(form);
     }
     else {
       this.updateRecord(form);
     }
-
-
     this.resetForm(form);
   }
 
@@ -51,6 +46,9 @@ export class ReservationsComponent implements OnInit {
       this.toastr.success('Item created successfully.', 'Great!');
       this.resetForm(form);
       this.service.getReservation();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Insert Error! ' + err.error.HttpErrorResponse);
     });
   }
 
@@ -59,6 +57,9 @@ export class ReservationsComponent implements OnInit {
       this.toastr.info('Item updated successfully.', 'Hey!');
       this.resetForm(form);
       this.service.getReservation();
+    }, (err: HttpErrorResponse) => {
+      console.log(err);
+      this.toastr.warning('Update Error! ' + err.error.HttpErrorResponse);
     });
   }
 

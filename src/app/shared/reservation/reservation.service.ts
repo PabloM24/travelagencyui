@@ -15,22 +15,22 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   getReservation() {
-    this.http.get(this.rootURL, { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
+    this.http.get(this.rootURL + 'secure/reservation', { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) })
       .toPromise().then(res => this.list = res as Reservation[]);
   }
 
   postReservation(formData: Reservation) {
-    return this.http.post(this.rootURL, formData,
+    return this.http.post(this.rootURL + 'secure/reservation', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putReservation(formData: Reservation) {
-    return this.http.put(this.rootURL + '/' + formData.ID_Consecutivo, formData,
+    return this.http.put(this.rootURL + 'secure/reservation', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
-  deleteReservation(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/' + ID_Consecutivo,
+  deleteReservation(id: string) {
+    return this.http.delete(this.rootURL + 'secure/reservation?id=' + id,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }
