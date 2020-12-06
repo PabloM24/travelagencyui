@@ -21,7 +21,7 @@ export class CarTypesComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm();
-    this.driveOptions = ["4x2", "4x4"];
+    this.driveOptions = ["2WD", "4WD", "AWD"];
     this.categoryOptions = ["Sedan", "Hatchback", "SUV", "Pickup", "Minivan", "Sport"];
     this.engineOptions = ["Diesel", "Gas", "Electric"];
     this.capacityOptions = [2, 5, 7, 9];

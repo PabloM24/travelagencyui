@@ -4,8 +4,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Brand</strong></label>
-            <input name="id" #id='ngModel' [(ngModel)]="service.formData.id" class="form-control" required>
-            <div *ngIf="id.invalid && id.touched">
+            <input name="brand" #brand='ngModel' [(ngModel)]="service.formData.brand" class="form-control" required>
+            <div *ngIf="brand.invalid && brand.touched">
                 <p style="color:red">This field is required.</p>
             </div>
         </div>

@@ -10,7 +10,6 @@
                 <th>Year</th>
                 <th>Millage</th>
                 <th>License Plate</th>
-                <th>Price</th>
             </tr>
         </thead>
         <tr *ngFor="let item of service.list">
@@ -22,10 +21,8 @@
             <td (click)="populateForm(item)">{{ item.year }}</td>
             <td (click)="populateForm(item)">{{ item.millage }}</td>
             <td (click)="populateForm(item)">{{ item.license_plate }}</td>
-            <td (click)="populateForm(item)">{{ item.price }}</td>
             <td><button class="btn btn-sm btn-outline-danger" (click)="onDelete(item.id)">&times;</button>
             </td>
         </tr>
-
     </table>
 </div>
