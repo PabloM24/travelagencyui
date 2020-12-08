@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
       this.service.getUser();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Sign Error!', 'Usuario ya existe');
+      this.toastr.warning('Sign Error!', 'User already exists!');
     });
   }
 

@@ -37,6 +37,27 @@
                                 <label for="email">Email address</label>
                             </div>
 
+                            <div class="form-label-group">
+                                <input id="birthday" name="birthday" #birthday="ngModel"
+                                    [(ngModel)]="service.formData.birthday" type="date" class="form-control"
+                                    placeholder="Birthday" required autofocus>
+                                <label for="birthday">Birthday</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="identification" name="identification" #identification="ngModel"
+                                    [(ngModel)]="service.formData.identification" class="form-control"
+                                    placeholder="Identification" required autofocus>
+                                <label for="identification">Identification</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input id="phone" name="phone" #phone="ngModel" [(ngModel)]="service.formData.phone"
+                                    type="tel" pattern="[0-9]{4}-[0-9]{4}" class="form-control" placeholder="Phone"
+                                    required autofocus>
+                                <label for="phone">Phone</label>
+                            </div>
+
                             <hr>
 
                             <div class="form-label-group">

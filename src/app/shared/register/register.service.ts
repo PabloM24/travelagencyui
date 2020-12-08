@@ -17,18 +17,18 @@ export class RegisterService {
   readonly rootURL = environment.apiURL;
 
   getUser() {
-    this.http.get(this.rootURL + '/Usuarios', {
+    this.http.get(this.rootURL + 'secure/user-info', {
       headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') })
     }).toPromise().then(res => this.list = res as Register[]);
   }
 
   postUser(formData: Register) {
-    return this.http.post(this.rootURL + '/Usuarios', formData,
+    return this.http.post(this.rootURL + 'user', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   putUser(formData: Register) {
-    return this.http.put(this.rootURL + '/Usuarios/', formData,
+    return this.http.put(this.rootURL + 'secure/user-info', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
