@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "travelagencyui"
+  "defaultProject": "travelagencyui",
+  "cli": {
+    "analytics": false
+  }
 }
