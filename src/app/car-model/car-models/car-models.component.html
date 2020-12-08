@@ -12,7 +12,11 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Brand</strong></label>
-            <input name="brand" #brand="ngModel" [(ngModel)]="service.formData.brand" class="form-control" required>
+            <select name="brand" #brand="ngModel" [(ngModel)]="service.formData.brand" class="form-control" required>
+                <option disabled>{{service.formData.brand}}</option>
+                <option *ngFor="let carB of carBrand.list" [ngValue]="carB.id">
+                    {{carB.name}}</option>
+            </select>
             <div *ngIf="brand.invalid && brand.touched">
                 <p style="color:red">This field is required.</p>
             </div>

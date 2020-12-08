@@ -1,3 +1,4 @@
+import { CarBrandService } from './../../shared/carBrand/car-brand.service';
 import { CarModelService } from './../../shared/carModel/car-model.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -11,11 +12,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CarModelsComponent implements OnInit {
 
-  constructor(public service: CarModelService,
+  constructor(public service: CarModelService, public carBrand: CarBrandService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.carBrand.getCarBrand();
   }
 
   resetForm(form?: NgForm) {
