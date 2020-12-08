@@ -15,6 +15,9 @@
                                     [(ngModel)]="service.formData.first_name" type="text" class="form-control"
                                     placeholder="first_name" required autofocus>
                                 <label for="first_name">Name</label>
+                                <div *ngIf="first_name.invalid && first_name.touched">
+                                    <p style="color:red">First name required./p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
@@ -22,6 +25,9 @@
                                     [(ngModel)]="service.formData.last_name" type="text" class="form-control"
                                     placeholder="last_name" required autofocus>
                                 <label for="last_name">Last Name</label>
+                                <div *ngIf="last_name.invalid && last_name.touched">
+                                    <p style="color:red">Last name required./p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
@@ -29,12 +35,18 @@
                                     type="text" [(ngModel)]="service.formData.second_last_name" class="form-control"
                                     placeholder="second_last_name" required autofocus>
                                 <label for="second_last_name">Second Last Name</label>
+                                <div *ngIf="second_last_name.invalid && second_last_name.touched">
+                                    <p style="color:red">Second name required./p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
                                 <input id="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email"
                                     type="email" class="form-control" placeholder="Email address" required autofocus>
                                 <label for="email">Email address</label>
+                                <div *ngIf="email.invalid && email.touched">
+                                    <p style="color:red">Email required. Format: user@domain.com</p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
@@ -42,13 +54,19 @@
                                     [(ngModel)]="service.formData.birthday" type="date" class="form-control"
                                     placeholder="Birthday" required autofocus>
                                 <label for="birthday">Birthday</label>
+                                <div *ngIf="birthday.invalid && birthday.touched">
+                                    <p style="color:red">Birthday required./p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
                                 <input id="identification" name="identification" #identification="ngModel"
                                     [(ngModel)]="service.formData.identification" class="form-control"
-                                    placeholder="Identification" required autofocus>
+                                    placeholder="Identification" pattern="[0-9]{4}-[0-9]{4}" required autofocus>
                                 <label for="identification">Identification</label>
+                                <div *ngIf="identification.invalid && identification.touched">
+                                    <p style="color:red">Identification required. Format: 1234-5678</p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
@@ -56,6 +74,9 @@
                                     type="tel" pattern="[0-9]{4}-[0-9]{4}" class="form-control" placeholder="Phone"
                                     required autofocus>
                                 <label for="phone">Phone</label>
+                                <div *ngIf="phone.invalid && phone.touched">
+                                    <p style="color:red">Phone number required. Format: 1234-5678</p>
+                                </div>
                             </div>
 
                             <hr>
@@ -65,6 +86,9 @@
                                     [(ngModel)]="service.formData.username" type="text" class="form-control"
                                     placeholder="User Name" required>
                                 <label for="username">User Name</label>
+                                <div *ngIf="username.invalid && username.touched">
+                                    <p style="color:red">Birthday required./p>
+                                </div>
                             </div>
 
                             <div class="form-label-group">
@@ -72,6 +96,9 @@
                                     [(ngModel)]="service.formData.password" type="password" class="form-control"
                                     placeholder="password" required>
                                 <label for="password">Password</label>
+                                <div *ngIf="password.invalid && password.touched">
+                                    <p style="color:red">Birthday required./p>
+                                </div>
                             </div>
 
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"

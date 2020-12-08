@@ -17,7 +17,7 @@ export class RegisterService {
   readonly rootURL = environment.apiURL;
 
   getUser() {
-    this.http.get(this.rootURL + 'secure/user-info', {
+    this.http.get(this.rootURL + 'secure/user', {
       headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') })
     }).toPromise().then(res => this.list = res as Register[]);
   }
@@ -28,12 +28,12 @@ export class RegisterService {
   }
 
   putUser(formData: Register) {
-    return this.http.put(this.rootURL + 'secure/user-info', formData,
+    return this.http.put(this.rootURL + 'secure/user', formData,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
   }
 
   deleteUser(ID_Consecutivo: string) {
-    return this.http.delete(this.rootURL + '/Usuarios/',
+    return this.http.delete(this.rootURL,
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
 
   }

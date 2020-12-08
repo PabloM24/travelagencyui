@@ -1,6 +1,4 @@
 export class Homeuser {
-    username: string;
-    password: string;
     identification: string;
     first_name: string;
     last_name: string;

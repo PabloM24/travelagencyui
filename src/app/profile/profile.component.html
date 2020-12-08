@@ -83,65 +83,111 @@
                             <span class="text-secondary">bootdey</span>
                         </li>
 
-                        <button class="btn btn-lg btn-danger btn-block text-uppercase" type="submit">Close
-                            account</button>
-
+                        <button class="btn btn-lg btn-danger btn-block text-uppercase" type="submit">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#closeaccount">Close
+                                Account</a>
+                        </button>
                     </ul>
                 </div>
             </div>
             <div class="col-md-8">
                 <form class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
-                    <!-- *ngIf="Id_usuario!=null"> -->
                     <fieldset>
                         <div class="form-label-group">
-                            <input type="hidden" name="identification" #identification="ngModel"
-                                [(ngModel)]="service.formData.identification" class="form-control">
+                            <input id="identification" name="identification" #identification="ngModel"
+                                [(ngModel)]="service.userData.identification" class="form-control"
+                                placeholder="identification" required autofocus>
+                            <label for="identification">Identification</label>
+                            <div *ngIf="identification.invalid && identification.touched">
+                                <p style="color:red">Identification required. Format: 12345678</p>
+                            </div>
                         </div>
+                        <hr>
                         <div class="form-label-group">
                             <input id="first_name" name="first_name" #first_name?="ngModel"
-                                [(ngModel)]="service.formData.first_name" type="text" class="form-control"
+                                [(ngModel)]="service.userData.first_name" type="text" class="form-control"
                                 placeholder="first_name" required autofocus>
                             <label for="first_name">Name</label>
+                            <div *ngIf="email.invalid && email.touched">
+                                <p style="color:red">Field required</p>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-label-group">
                             <input id="last_name" name="last_name" #last_name="ngModel"
-                                [(ngModel)]="service.formData.last_name" type="text" class="form-control"
+                                [(ngModel)]="service.userData.last_name" type="text" class="form-control"
                                 placeholder="last_name" required autofocus>
                             <label for="last_name">LastName</label>
+                            <div *ngIf="email.invalid && email.touched">
+                                <p style="color:red">Field required</p>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-label-group">
                             <input id="second_last_name" name="second_last_name" #second_last_name="ngModel"
-                                [(ngModel)]="service.formData.second_last_name" type="text" class="form-control"
+                                [(ngModel)]="service.userData.second_last_name" type="text" class="form-control"
                                 placeholder="second_last_name" required autofocus>
                             <label for="second_last_name">Second LastName</label>
+                            <div *ngIf="email.invalid && email.touched">
+                                <p style="color:red">Field required</p>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email"
+                            <input id="email" name="email" #email="ngModel" [(ngModel)]="service.userData.email"
                                 type="email" class="form-control" placeholder="email" required autofocus>
                             <label for="email">Email address</label>
+                            <div *ngIf="email.invalid && email.touched">
+                                <p style="color:red">Field required</p>
+                            </div>
                         </div>
                         <hr>
                         <div class="form-label-group">
-                            <input id="username" name="username" #username="ngModel"
-                                [(ngModel)]="service.formData.username" type="text" class="form-control"
-                                placeholder="username" required readonly>
-                            <label for="username">User Name</label>
+                            <input id="birthday" name="birthday" #birthday="ngModel"
+                                [(ngModel)]="service.userData.birthday" type="date" class="form-control"
+                                placeholder="birthday" required autofocus>
+                            <label for="birthday">Birthday</label>
+                            <div *ngIf="birthday.invalid && birthday.touched">
+                                <p style="color:red">Field required</p>
+                            </div>
                         </div>
                         <hr>
+
                         <div class="form-label-group">
-                            <input id="password" name="password" #Contrasenna="ngModel"
-                                [(ngModel)]="service.formData.password" type="password" class="form-control"
-                                placeholder="password" required>
-                            <label for="password">New Password</label>
+                            <input id="phone" name="phone" #phone="ngModel" [(ngModel)]="service.userData.phone"
+                                type="tel" pattern="[0-9]{4}-[0-9]{4}" class="form-control" placeholder="phone" required
+                                autofocus>
+                            <label for="phone">Phone</label>
+                            <div *ngIf="phone.invalid && phone.touched">
+                                <p style="color:red">Phone number required. Format: 1234-5678</p>
+                            </div>
                         </div>
                         <hr>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
                             [disabled]="form.invalid">Update</button>
                     </fieldset>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Logout Modal-->
+<div class="modal fade" id="closeaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Delete" below if would like to delete your account.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" (click)="onDelete()" data-dismiss="modal">Logout</a>
             </div>
         </div>
     </div>

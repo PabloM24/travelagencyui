@@ -1,6 +1,6 @@
-import { Homeuser } from './../shared/login/homeuser.model';
-import { Register } from './../shared/register/register.model';
-import { RegisterService } from './../shared/register/register.service';
+import { Router } from '@angular/router';
+import { HomeuserService } from './../shared/homeuser/homeuser.service';
+import { Homeuser } from './../shared/homeuser/homeuser.model';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './../shared/login/login.service';
 import { NgForm } from '@angular/forms';
@@ -17,8 +17,6 @@ declare var ID_usuario: any;
 export class ProfileComponent implements OnInit {
 
   userDetails: Homeuser;
-  username: string;
-  password: string;
   identification: string;
   first_name: string;
   last_name: string;
@@ -27,37 +25,28 @@ export class ProfileComponent implements OnInit {
   birthday: Date;
   phone: string;
 
-  constructor(private update: LoginService, public service: RegisterService, private toastr: ToastrService) { }
+  constructor(private router: Router, public service: HomeuserService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    if (this.user != null) {
-      this.update.getUserDetails().subscribe((data: Homeuser) => {
-        this.username = data.username;
-        this.password = data.password;
-        this.identification = data.identification;
-        this.first_name = data.first_name;
-        this.last_name = data.last_name;
-        this.second_last_name = data.second_last_name;
-        this.email = data.email;
-        this.birthday = data.birthday;
-        this.phone = data.phone;
-        this.getInfo();
-      });
-    }
-  }
+    this.service.getUserDetails().subscribe((data: Homeuser) => {
 
-  get user(): any {
-    return JSON.parse(localStorage.getItem('user'));
+      this.identification = data.identification;
+      this.first_name = data.first_name;
+      this.last_name = data.last_name;
+      this.second_last_name = data.second_last_name;
+      this.email = data.email;
+      this.birthday = data.birthday;
+      this.phone = data.phone;
+      this.getInfo();
+    });
   }
 
   getInfo(form?: NgForm) {
     if (form != null) {
       form.resetForm();
     }
-    this.service.formData = {
+    this.service.userData = {
 
-      username: this.username,
-      password: this.password,
       identification: this.identification,
       first_name: this.first_name,
       last_name: this.last_name,
@@ -70,18 +59,32 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.insertRecord(form);
+    this.updateRecord(form);
     console.log('Usuario actualizado correctamente!');
   }
 
-  insertRecord(form: NgForm) {
+  updateRecord(form: NgForm) {
     this.service.putUser(form.value).subscribe(res => {
       this.toastr.success('User update successfully.', 'Great!');
       this.service.getUser();
     }, (err: HttpErrorResponse) => {
       console.log(err);
-      this.toastr.warning('Sign Error!', 'Error Update');
+      this.toastr.warning('Error!', 'Update error');
     });
   }
+
+  onDelete() {
+    if (confirm('Are you sure you want to delete your account?')) {
+      this.service.deleteUser().subscribe(res => {
+        this.toastr.warning('User deleted successfully.', 'Careful!');
+        localStorage.removeItem('userToken');
+        this.router.navigate(['/login']);
+      }, (err: HttpErrorResponse) => {
+        console.log(err);
+        this.toastr.warning('Delete Error! ' + err);
+      });
+    }
+  }
+
 
 }

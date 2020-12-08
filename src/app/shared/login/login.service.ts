@@ -1,3 +1,4 @@
+import { Homeuser } from './../homeuser/homeuser.model';
 import { FormsModule } from '@angular/forms';
 import { Login } from './login.model';
 import { Observable } from 'rxjs';
@@ -19,14 +20,13 @@ export class LoginService {
   constructor(private http: HttpClient, public zone: NgZone, public route: Router, private toastr: ToastrService) { }
 
   userAuthentication(formData: Login) {
-    //console.log(formData);
     return this.http.post(this.rootURL + 'authenticate', formData, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
-
   }
 
   getUserDetails() {
-    return this.http.get(this.rootURL + '/secure/user',
+    return this.http.get(this.rootURL + 'secure/user-info',
       { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('userToken') }) });
-
   }
+
+
 }
