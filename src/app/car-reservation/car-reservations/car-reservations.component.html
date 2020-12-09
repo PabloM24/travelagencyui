@@ -2,7 +2,13 @@
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" class="form-control">
     <div class="form-group">
         <label><strong>Car</strong></label>
-        <input name="car" #car="ngModel" [(ngModel)]="service.formData.car" class="form-control" required>
+
+
+        <select name="car" #car="ngModel" [(ngModel)]="service.formData.car" class="form-control" required>
+            <option disabled>{{service.formData.model}}</option>
+            <option *ngFor="let car of cars.list" [ngValue]="car.id">
+                {{car.license_plate}}</option>
+        </select>
         <div *ngIf="car.invalid && car.touched">
             <p style="color:red">This field is required.</p>
         </div>

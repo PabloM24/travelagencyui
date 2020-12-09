@@ -1,3 +1,6 @@
+import { CarBrandService } from './../../shared/carBrand/car-brand.service';
+import { CarTypeService } from './../../shared/carType/car-type.service';
+import { CarModelService } from './../../shared/carModel/car-model.service';
 import { CarService } from './../../shared/car/car.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,12 +16,15 @@ export class CarsComponent implements OnInit {
 
   availability = [];
 
-  constructor(public service: CarService,
+  constructor(public service: CarService, public carBrand: CarBrandService, public carModel: CarModelService, public carType: CarTypeService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
     this.availability = [true, false];
+    this.carBrand.getCarBrand();
+    this.carModel.getCarModel();
+    this.carType.getCarType();
   }
 
   resetForm(form?: NgForm) {

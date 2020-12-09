@@ -1,3 +1,4 @@
+import { CarService } from './../../shared/car/car.service';
 import { CarReservationService } from './../../shared/carReservation/car-reservation.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -15,13 +16,14 @@ export class CarReservationsComponent implements OnInit {
   days = 1;
   tomorrow = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000);
 
-  constructor(public service: CarReservationService,
+  constructor(public service: CarReservationService, public cars: CarService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
     this.today;
     this.tomorrow;
+    this.cars.getCar();
   }
 
   resetForm(form?: NgForm) {
