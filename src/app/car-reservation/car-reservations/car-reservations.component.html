@@ -5,9 +5,9 @@
 
 
         <select name="car" #car="ngModel" [(ngModel)]="service.formData.car" class="form-control" required>
-            <option disabled>{{service.formData.model}}</option>
-            <option *ngFor="let car of cars.list" [ngValue]="car.id">
-                {{car.license_plate}}</option>
+            <option disabled>{{service.formData.car}}</option>
+            <option *ngFor="let carsl of cars.list" [ngValue]="carsl.id">
+                {{carsl.license_plate}}</option>
         </select>
         <div *ngIf="car.invalid && car.touched">
             <p style="color:red">This field is required.</p>
