@@ -3,7 +3,11 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Hotel</strong></label>
-            <input name="hotel" #hotel="ngModel" [(ngModel)]="service.formData.hotel" class="form-control" required>
+            <select name="hotel" #hotel="ngModel" [(ngModel)]="service.formData.hotel" class="form-control" required>
+                <option disabled>{{service.formData.hotel}}</option>
+                <option *ngFor="let mainhotel of hotelService.list" [ngValue]="mainhotel.id">
+                    {{mainhotel.name}}</option>
+            </select>
             <div *ngIf="hotel.invalid && hotel.touched">
                 <p style="color:red">This field is required.</p>
             </div>
@@ -21,9 +25,13 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Room Type</strong></label>
-            <input name="room_type" #room_type='ngModel' [(ngModel)]="service.formData.room_type" class="form-control"
+            <select name="room_type" #room_type="ngModel" [(ngModel)]="service.formData.room_type" class="form-control"
                 required>
-            <div *ngIf="room_type.invalid && room_type.touched">
+                <option disabled>{{service.formData.room_type}}</option>
+                <option *ngFor="let roomT of roomType.list" [ngValue]="roomT.id">
+                    {{roomT.name}}</option>
+            </select>
+            <div *ngIf="hotel.invalid && hotel.touched">
                 <p style="color:red">This field is required.</p>
             </div>
         </div>
@@ -34,11 +42,10 @@
                 <option disabled>{{service.formData.available}}</option>
                 <option *ngFor="let availa of availability" [ngValue]="availa">
                     {{availa}}</option>
-                <div *ngIf="available.invalid && available.touched">
-                    <p style="color:red">This field is required.</p>
-                </div>
             </select>
-
+            <div *ngIf="available.invalid && available.touched">
+                <p style="color:red">This field is required.</p>
+            </div>
         </div>
     </div>
 

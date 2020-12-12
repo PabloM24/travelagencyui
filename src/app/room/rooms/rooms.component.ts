@@ -1,3 +1,5 @@
+import { RoomTypeService } from './../../shared/roomType/room-type.service';
+import { HotelService } from './../../shared/hotel/hotel.service';
 import { RoomService } from './../../shared/room/room.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,12 +15,14 @@ export class RoomsComponent implements OnInit {
 
   availability = [];
 
-  constructor(public service: RoomService,
+  constructor(public service: RoomService, public hotelService: HotelService, public roomType: RoomTypeService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
     this.availability = [true, false];
+    this.hotelService.getHotel();
+    this.roomType.getRoomType();
   }
 
   resetForm(form?: NgForm) {

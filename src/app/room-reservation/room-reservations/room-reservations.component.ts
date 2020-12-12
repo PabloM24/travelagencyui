@@ -1,3 +1,4 @@
+import { RoomService } from './../../shared/room/room.service';
 import { RoomReservationService } from './../../shared/roomReservation/room-reservation.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -15,13 +16,14 @@ export class RoomReservationsComponent implements OnInit {
   days = 1;
   tomorrow = new Date(Date.now() + this.days * 24 * 60 * 60 * 1000);
 
-  constructor(public service: RoomReservationService,
+  constructor(public service: RoomReservationService, public roomsH: RoomService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
     this.today;
     this.tomorrow;
+    this.roomsH.getRoom();
   }
 
   resetForm(form?: NgForm) {

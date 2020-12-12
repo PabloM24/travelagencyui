@@ -95,11 +95,11 @@
                     <fieldset>
                         <div class="form-label-group">
                             <input id="identification" name="identification" #identification="ngModel"
-                                [(ngModel)]="service.userData.identification" class="form-control"
-                                placeholder="identification" required autofocus>
+                                [(ngModel)]="service.userData.identification" pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}"
+                                class="form-control" placeholder="identification" required autofocus>
                             <label for="identification">Identification</label>
                             <div *ngIf="identification.invalid && identification.touched">
-                                <p style="color:red">Identification required. Format: 12345678</p>
+                                <p style="color:red">Identification required. Format: 1-2345-6789</p>
                             </div>
                         </div>
                         <hr>

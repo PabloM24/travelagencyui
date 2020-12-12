@@ -2,7 +2,11 @@
     <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id" class="form-control">
     <div class="form-group">
         <label><strong>Room</strong></label>
-        <input name="room" #room="ngModel" [(ngModel)]="service.formData.room" class="form-control" required>
+        <select name="room" #room="ngModel" [(ngModel)]="service.formData.room" class="form-control" required>
+            <option disabled>{{service.formData.room}}</option>
+            <option *ngFor="let roomH of roomsH.list" [ngValue]="roomH.id">
+                {{roomH.number}}</option>
+        </select>
         <div *ngIf="room.invalid && room.touched">
             <p style="color:red">This field is required.</p>
         </div>

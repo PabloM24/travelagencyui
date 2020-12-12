@@ -1,3 +1,4 @@
+import { HotelService } from './../../shared/hotel/hotel.service';
 import { RoomTypeService } from './../../shared/roomType/room-type.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -11,11 +12,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RoomTypesComponent implements OnInit {
 
-  constructor(public service: RoomTypeService,
+  constructor(public service: RoomTypeService, public hotelService: HotelService,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.hotelService.getHotel();
   }
 
   resetForm(form?: NgForm) {
@@ -39,8 +41,6 @@ export class RoomTypesComponent implements OnInit {
     else {
       this.updateRecord(form);
     }
-
-
     this.resetForm(form);
   }
 

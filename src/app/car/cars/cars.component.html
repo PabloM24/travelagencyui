@@ -4,25 +4,38 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Brand</strong></label>
-            <input name="brand" #brand='ngModel' [(ngModel)]="service.formData.brand" class="form-control" required>
+            <select name="brand" #brand="ngModel" [(ngModel)]="service.formData.brand" class="form-control" required>
+                <option disabled>{{service.formData.brand}}</option>
+                <option *ngFor="let carB of carBrand.list" [ngValue]="carB.id">
+                    {{carB.name}}</option>
+            </select>
             <div *ngIf="brand.invalid && brand.touched">
                 <p style="color:red">This field is required.</p>
             </div>
         </div>
         <div class="form-group col-md-6">
             <label><strong>Model</strong></label>
-            <input name="model" #model='ngModel' [(ngModel)]="service.formData.model" class="form-control" required>
+            <select name="model" #model="ngModel" [(ngModel)]="service.formData.model" class="form-control" required>
+                <option disabled>{{service.formData.model}}</option>
+                <option *ngFor="let carM of carModel.list" [ngValue]="carM.id">
+                    {{carM.name}}</option>
+            </select>
             <div *ngIf="model.invalid && model.touched">
                 <p style="color:red">This field is required.</p>
             </div>
+
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label><strong>Car Type</strong></label>
-            <input name="car_type" #car_type='ngModel' [(ngModel)]="service.formData.car_type" class="form-control"
+            <select name="car_type" #car_type="ngModel" [(ngModel)]="service.formData.car_type" class="form-control"
                 required>
+                <option disabled>{{service.formData.car_type}}</option>
+                <option *ngFor="let carT of carType.list" [ngValue]="carT.id">
+                    {{carT.name}}</option>
+            </select>
             <div *ngIf="car_type.invalid && car_type.touched">
                 <p style="color:red">This field is required.</p>
             </div>

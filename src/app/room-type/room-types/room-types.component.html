@@ -12,7 +12,11 @@
 
         <div class="form-group col-md-6">
             <label><strong>Hotel</strong></label>
-            <input name="hotel" #hotel="ngModel" [(ngModel)]="service.formData.hotel" class="form-control" required>
+            <select name="hotel" #hotel="ngModel" [(ngModel)]="service.formData.hotel" class="form-control" required>
+                <option disabled>{{service.formData.hotel}}</option>
+                <option *ngFor="let mainhotel of hotelService.list" [ngValue]="mainhotel.id">
+                    {{mainhotel.name}}</option>
+            </select>
         </div>
 
         <div class="form-group col-md-6">
